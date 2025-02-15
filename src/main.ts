@@ -1,9 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Habilitar CORS si es necesario
+  app.enableCors();
+
+  // Uso global de ValidationPipe para validar DTOs
+  app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
     .setTitle('RBAC Auth System')
@@ -13,12 +20,11 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+  
   const port = process.env.PORT || 3000;
   await app.listen(port);
 
   console.log(`Aplicación corriendo en http://localhost:${port}`);
-  console.log(
-    `Documentación Swagger disponible en http://localhost:${port}/api`,
-  );
+  console.log(`Documentación Swagger disponible en http://localhost:${port}/api`);
 }
 bootstrap();
