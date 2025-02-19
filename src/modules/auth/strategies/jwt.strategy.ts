@@ -17,6 +17,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     // Este método se invoca después de que se verifique el token.
     // El valor retornado se asignará a request.user.
     // Puedes agregar lógica adicional, por ejemplo, buscar al usuario en la base de datos.
-    return { userId: payload.sub, username: payload.username, role: payload.role };
+    return {
+      userId: payload.sub,
+      username: payload.username,
+      role: payload.role,
+    };
   }
 }

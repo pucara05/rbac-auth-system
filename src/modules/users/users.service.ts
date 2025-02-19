@@ -32,4 +32,11 @@ export class UsersService {
     });
     return this.usersRepository.save(newUser);
   }
+
+   // Nuevo método para actualizar la contraseña del usuario
+  async updateUserPassword(userId: number, newPassword: string): Promise<void> {
+    await this.usersRepository.update(userId, { password: newPassword });
+  }
 }
+
+
