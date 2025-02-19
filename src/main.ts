@@ -2,13 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Habilitar CORS si es necesario
   app.enableCors();
-
+  app.use(helmet());
   // Uso global de ValidationPipe para validar DTOs
   app.useGlobalPipes(new ValidationPipe());
 
