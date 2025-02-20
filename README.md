@@ -23,39 +23,60 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+
 RBAC Auth System
+
 Un sistema de autenticación y autorización basado en roles (RBAC) construido con NestJS, que utiliza JWT para la autenticación, bcrypt para el manejo seguro de contraseñas y una arquitectura modular para separar la lógica de usuarios, autenticación y administración.
 
 
 Tabla de Contenidos
 
 Características
+
 Tecnologías
+
 Arquitectura del Proyecto
+
 Instalación
+
 Configuración
+
 Uso
+
 Pruebas
+
 Migraciones y Seeds
+
 Mejoras Futuras
+
 Licencia
 
 Características
 
 Autenticación: Registro e inicio de sesión con JWT.
+
 Autorización basada en roles: Soporta al menos dos roles: user (por defecto) y admin.
+
 Protección de endpoints: Guards para verificar autenticación y autorización.
+
 Integración con Swagger: Documentación de la API con soporte para Bearer token.
+
 Buenas prácticas de seguridad: Uso de bcrypt para hashear contraseñas, Helmet para cabeceras seguras y validación global con ValidationPipe.
+
 Migraciones y Seeds: Gestión de base de datos con TypeORM y scripts de seed para crear un usuario administrador.
 
 Tecnologías
 
 NestJS: Framework progresivo de Node.js para construir aplicaciones escalables.
+
 TypeORM: ORM para TypeScript que facilita la interacción con la base de datos.
+
 JWT (JSON Web Token): Mecanismo para la autenticación y autorización sin estado.
+
 bcrypt: Biblioteca para hashear contraseñas.
+
 Swagger: Documentación interactiva de la API.
+
 Helmet: Middleware para mejorar la seguridad de las cabeceras HTTP.
 
 Arquitectura del Proyecto
@@ -90,6 +111,7 @@ src/
 └── seeds/                      // Scripts de seed para inicialización (p.ej. crear admin)
     └── seed.ts
 
+
 main.ts: Configura la aplicación (Helmet, CORS, Swagger, pipes de validación).
 
 AppModule: Importa módulos como DatabaseModule, AuthModule, UsersModule, AdminModule.
@@ -104,9 +126,11 @@ Seeds: Permite la inicialización de datos, como la creación de un usuario admi
 
 
 Instalación
+
 Clonar el repositorio:
 
 git clone https://github.com/tu-usuario/rbac-auth-system.git
+
 cd rbac-auth-system
 
 Instalar dependencias:
@@ -115,7 +139,9 @@ Instalar dependencias:
 npm install
 
 Configuración
+
 Variables de entorno:
+
 Crea un archivo .env en la raíz del proyecto con las siguientes variables (ajústalas según tu entorno):
 
 DB_HOST=localhost
@@ -142,44 +168,61 @@ Acceder a la documentación Swagger: Visita http://localhost:3000/api para ver y
 Autenticación:
 
 Usa el endpoint POST /auth/register para registrar usuarios (se registran como user por defecto).
+
 Usa el endpoint POST /auth/login para iniciar sesión y obtener el token JWT.
+
 El token JWT incluirá información del usuario, incluyendo su rol, y se usará en la cabecera Authorization: Bearer <token> para acceder a endpoints protegidos.
+
 Endpoints Administrativos:
 
 Solo accesibles para usuarios con rol 'admin'.
+
 Ejemplos:
+
 GET /admin para obtener datos administrativos.
+
 PATCH /admin/users/:id/role para actualizar el rol de un usuario.
+
 DELETE /admin/users/:id para eliminar un usuario.
 
 Pruebas
 
 Pruebas Unitarias
+
 npm run test
 
 Pruebas End-to-End:
+
 npm run test:e2e
 
 Migraciones y Seeds
 
 Migraciones:
+
 Usa TypeORM para gestionar la estructura de la base de datos.
 
 npm run migration:generate -- src/migrations/NombreMigracion
+
 npm run migration:run
 
 Seed:
+
 Ejecuta el script de seed para crear un usuario admin:
 
 npm run seed
 
 Mejoras Futuras
+
 Integrar OAuth2 para autenticación con proveedores externos (Google, Facebook, etc.).
+
 Añadir un sistema de permisos más granular.
+
 Implementar un dashboard administrativo.
+
 Mejorar la configuración de seguridad (rate limiting, logs avanzados, etc.).
 
 Licencia
+
 MIT
 
 
