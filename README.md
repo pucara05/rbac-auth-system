@@ -82,9 +82,8 @@ Helmet: Middleware para mejorar la seguridad de las cabeceras HTTP.
 Arquitectura del Proyecto
 
 La estructura del proyecto sigue una arquitectura modular para separar las responsabilidades:
-
- '''
- src/
+```
+src/
 ├── app.module.ts               // Módulo raíz que importa todos los módulos
 ├── main.ts                     // Punto de entrada de la aplicación
 ├── config/                     // Configuraciones globales (e.g., conexión a la BD)
@@ -111,7 +110,7 @@ La estructura del proyecto sigue una arquitectura modular para separar las respo
 │       └── admin.controller.ts // Endpoints protegidos para administradores
 └── seeds/                      // Scripts de seed para inicialización (p.ej. crear admin)
     └── seed.ts
-'''
+```
 
 
 
