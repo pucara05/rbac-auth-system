@@ -91,10 +91,15 @@ src/
     └── seed.ts
 
 main.ts: Configura la aplicación (Helmet, CORS, Swagger, pipes de validación).
+
 AppModule: Importa módulos como DatabaseModule, AuthModule, UsersModule, AdminModule.
+
 AuthModule: Gestiona autenticación (JWT, bcrypt, estrategias, guards y decoradores).
+
 UsersModule: Gestiona operaciones CRUD de usuarios, con la entidad y lógica asociada.
+
 AdminModule: Ofrece endpoints administrativos protegidos por guards que requieren el rol 'admin'.
+
 Seeds: Permite la inicialización de datos, como la creación de un usuario admin.
 
 
